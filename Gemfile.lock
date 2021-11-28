@@ -40,9 +40,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     diff-lcs (1.4.4)
-    dotenv (2.7.6)
     eventmachine (1.2.7)
-    foreman (0.87.2)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     matrix (0.4.2)
@@ -53,7 +51,6 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
-    pg (0.20.0)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -64,11 +61,6 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     rake (13.0.6)
     regexp_parser (2.1.1)
     require_all (3.0.0)
@@ -94,7 +86,6 @@ GEM
       rspec-support (~> 3.10.0)
     rspec-support (3.10.3)
     ruby2_keywords (0.0.5)
-    session_secret_generator (0.1.0)
     shotgun (0.9.2)
       rack (>= 1.0)
     sinatra (2.1.0)
@@ -105,6 +96,8 @@ GEM
     sinatra-activerecord (2.0.23)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     sqlite3 (1.4.2)
     thin (1.8.1)
       daemons (~> 1.0, >= 1.0.9)
@@ -126,23 +119,19 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
-  activerecord
+  activerecord (~> 6.1, >= 6.1.4)
   bcrypt
   capybara
   database_cleaner!
-  dotenv
-  foreman
-  pg (= 0.20)
   pry
   rack-test
-  rails_12factor
   rake
   require_all
   rspec
-  session_secret_generator
   shotgun
   sinatra
   sinatra-activerecord
+  sinatra-flash
   sqlite3
   thin
   tux

@@ -1,7 +1,6 @@
-class CreateMovieEntries < ActiveRecord::Migration
+class CreateMovieEntries < ActiveRecord::Migration[4.2]
   def change
     create_table :movie_entries do |t|
-      t.string :title
       t.string :content
       t.integer :user_id
 
