@@ -7,4 +7,6 @@ end
 #the following line of code is to enable PATCH and DELETE function
 use Rack::MethodOverride
 
+#other controllers mounted here:
+
 run ApplicationController
