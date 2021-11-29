@@ -4,6 +4,14 @@ class UsersController < ApplicationController
     get '/users/login' do
         erb :'users/login'
       end
+
+    #log in user and create a session
+      post 'users/login' do
+        binding.pry
+
+
+    end
+
     
     
       #renders signup page (form)
