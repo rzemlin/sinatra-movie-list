@@ -120,7 +120,7 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
-  activerecord (~> 5.2, >= 5.2.1)
+  activerecord (~> 5.1, >= 5.2)
   bcrypt
   capybara
   database_cleaner!
