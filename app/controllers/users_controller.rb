@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
 
     #renders login page (form)
-    get '/users/login' do
-        erb :'users/login'
+    get '/login' do
+        erb :'login'
       end
 
     #log in user and create a session
-      post 'users/login' do
-        binding.pry
+      post '/login' do
+        #find the user
+        @user = User.find_by(email: params[:email])
+        #authenticate (make sure they have the right credentials)
+        @user.authenticate(params[:password])
+        #log the user oin
+        #redirect to (show, dashboard, home)
 
 
     end
