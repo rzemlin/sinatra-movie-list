@@ -10,10 +10,15 @@ class UsersController < ApplicationController
         #find the user
         @user = User.find_by(email: params[:email])
         #authenticate (make sure they have the right credentials)
-        @user.authenticate(params[:password])
-        #log the user oin
-        #redirect to (show, dashboard, home)
+        if @user.authenticate(params[:password])
+            binding.pry
+          #log the user in -- create session
+          #redirect to (show, dashboard, home
+        else
+            #tell user they entered incorrect credentials
+            #redirect to login page
 
+        end
 
     end
 
