@@ -24,10 +24,15 @@ class UsersController < ApplicationController
     end
 
     #renders signup page (form)
-    get 'users/signup' do
-        erb :'users/signup'
+    get '/signup' do
+        erb :signup
 
     end
+
+    post '/users' do
+      #here we will create and persist a new user to the database
+    end
+    
 
     #user show route
     get '/users/:id' do
