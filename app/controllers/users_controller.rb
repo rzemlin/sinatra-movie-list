@@ -32,9 +32,22 @@ class UsersController < ApplicationController
     post '/users' do
       if params[:name] != "" && params[:email] != "" && params[:params] != ""
       @user = User.create(params)
-      redirect "/users/#{@users.id}"
+      if @user.save
+        # valid input
+        session[:user_id] = @user.id # actually logging the user in
+        # where do I go now?
+        # let's go to the user show page
+        flash[:message] = "You have successfully created an account, #{@user.name}! Welcome!"
+        redirect "/users/#{@user.id}"
       else
+        # not valid input
+        # it would be better to include a message to the user
+        # telling them what is wrong
+  
+        flash[:errors] = "Account creation failure: #{@user.errors.full_messages.to_sentence}"
+        redirect '/signup'
       end
+    end
 
 
       #here we will create and persist a new user to the database
@@ -43,7 +56,13 @@ class UsersController < ApplicationController
 
     #user show route
     get '/users/:id' do
+      @user = User.find_by(id: params[:id])
+      #shotgun
+      #binding.pry
+      #raise params.inspect
       erb :'users/show'
+    end
+
 
 
 
