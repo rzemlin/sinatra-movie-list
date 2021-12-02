@@ -30,14 +30,20 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
+      if params[:name] != "" && params[:email] != "" && params[:params] != ""
+      @user = User.create(params)
+      redirect "/users/#{@users.id}"
+      else
+      end
+
+
       #here we will create and persist a new user to the database
     end
     
 
     #user show route
     get '/users/:id' do
-      "this will be the user show route"
-    end
+      erb :'users/show'
 
 
 
