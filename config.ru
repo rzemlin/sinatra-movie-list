@@ -7,4 +7,5 @@ use Rack::MethodOverride
 
 #other controllers mounted here:
 use UsersController
+use MoviesListController
 run ApplicationController
