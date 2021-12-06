@@ -1,1 +1,8 @@
-this will have an edit form
+<h2><%= @movie_entry.title %></h2>
+
+<form class="" action="/movie_list" method="post">
+<label for="name">Title:</label>
+<input type="text" name="title" placeholder="<%= @movie_entry.title %>">
+<label for="name">Content:</label>
+<input type="text" name="content" placeholder="<%= @movie_entry.content %>">
+<input type="submit" name="" value="Submit Changes">

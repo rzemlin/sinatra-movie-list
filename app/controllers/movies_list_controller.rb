@@ -33,6 +33,7 @@ get "/movies_list/:id" do
 end
 
 get '/movies_list/:id/edit' do
+    @movie_entry = MovieEntry.find(params[:id])
     erb :'movies_list/edit'
   end
 
