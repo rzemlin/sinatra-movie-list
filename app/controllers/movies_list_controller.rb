@@ -32,6 +32,9 @@ get "/movies_list/:id" do
     erb :"/movies_list/show"
 end
 
+get '/movies_list/:id/edit' do
+    erb :'movies_list/edit'
+  end
 
 
 
