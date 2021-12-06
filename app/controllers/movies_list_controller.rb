@@ -25,8 +25,14 @@ post "/movie_list" do
         redirect 'movies_list/new'
     end
 
-
 end
+
+get "/movies_list/:id" do
+    @movie_entry = MovieEntry.find(params[:id])
+    erb :"/movies_list/show"
+end
+
+
 
 
 
