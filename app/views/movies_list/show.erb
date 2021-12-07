@@ -3,5 +3,7 @@
 
 <p>Description: <%= @movie_entry.content %></p>
 
+<% if current_user == @movie_entry.user%>
 <a href="/movies_list/<%= @movie_entry.id %>/edit">Edit</a>
 <a href="/movies_list/<%= @movie_entry.id %>/edit">Delete</a>
+<%end%>
