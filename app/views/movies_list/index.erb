@@ -1,1 +1,7 @@
-Index
+<% @movies_list.each do |movie_entry|%>
+<h4><a href="/movies_list/<%=movie_entry.id%>"><%= movie_entry.title %>:</a></h4>
+<h6> <%= movie_entry.created_at %></h6>
+<h5> <%= movie_entry.content %></h5>
+<h6>By <%=movie_entry.user.name%></h6>
+
+<%end%>
