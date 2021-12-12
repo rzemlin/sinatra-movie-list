@@ -51,29 +51,39 @@ get '/movies_list/:id/edit' do
 
 end
 
-patch '/movie_list/:id' do
+  patch '/movie_list/:id' do
     set_movie_entry
     if logged_in?
         
-        if @movie_entry.user == current_user
+        if @movie_entry.user == current_user && params[:content] != ""
             @movie_entry.update({title: params[:title], content: params[:content]})
             redirect "/movies_list/#{@movie_entry.id}"
         else
-            redirect "/user/#{current_user.id}"
+            redirect "/users/#{current_user.id}"
         end
         
      else
         redirect '/'
      end
-end
+  end
 
+  delete '/movies_list/:id' do
+    set_movie_entry
+    if authorized_to_edit?(@movie_entry)
+      @movie_entry.destroy
+      flash[:message] = "Successfully deleted that entry."
+      redirect '/movie_list'
+    else
+      redirect '/movie_list'
+    end
+  end
 
-    
-    private
+   private
 
   def set_movie_entry
     @movie_entry = MovieEntry.find(params[:id])
   end
+
 
 
 
