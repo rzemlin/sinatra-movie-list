@@ -1,27 +1,33 @@
 class UsersController < ApplicationController
 
          #renders login page (form)
-    get '/login' do
-        erb :'login'
-    end
-
-              #log in user and create a session
-    post '/login' do
-              #find the user
-      @user = User.find_by(email: params[:email])
-              #authenticate (make sure they have the right credentials)
-      if @user.authenticate(params[:password])
-         session[:user_id] = @user.id #actually logging in
-              #log the user in -- create session
-              #redirect to (show, dashboard, home
-              puts session
-         redirect "users/#{@user.id}"
-        else
-            #tell user they entered incorrect credentials
-            #redirect to login page
-        
-      end
-    end
+         get '/login' do
+          redirect_if_logged_in
+          erb :login
+        end
+      
+        # the purpose of this route is to receive the login form,
+        # find the user, and log the user in (create a session)
+        post '/login' do
+          # params looks like: {email: "user@user.com", password: "password"}
+          # Find the user
+          @user = User.find_by(email: params[:email])
+          # Authenticate the user - verify the user is who they say they are
+          # they have the credentials - email/password combo
+          if @user && @user.authenticate(params[:password])
+            # log the user in - create the user session
+            session[:user_id] = @user.id # actually logging the user in
+            # redirect to the user's show page
+      
+            flash[:message] = "Welcome, #{@user.name}!"
+            redirect "users/#{@user.id}"
+          else
+            flash[:errors] = "Your credentials were invalid.  Please sign up or try again."
+            # tell the user they entered invalid credentials
+            # redirect them to the login page
+            redirect '/login'
+          end
+        end
 
     #renders signup page (form)
     get '/signup' do
@@ -57,6 +63,7 @@ class UsersController < ApplicationController
     #user show route
     get '/users/:id' do
       @user = User.find_by(id: params[:id])
+      
       #shotgun
       #binding.pry
       #raise params.inspect
@@ -68,7 +75,7 @@ class UsersController < ApplicationController
       session.clear
       redirect '/'
     end
-    
+
 
 
 
