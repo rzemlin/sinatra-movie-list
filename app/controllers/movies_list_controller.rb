@@ -24,10 +24,12 @@ post "/movie_list" do
     end
 
     if params[:title] != "" && params[:content] != ""
+        flash[:message] = "Successfully created a new entry"
         @movie_entry = MovieEntry.create(title: params[:title], content: params[:content], user_id: current_user.id)
         redirect "/movies_list/#{@movie_entry.id}"
     else 
-        redirect 'movies_list/new'
+        flash[:message] = "Please enter a valid title and description to create a new entry"
+        redirect 'movie_list/new'
     end
 
 end
