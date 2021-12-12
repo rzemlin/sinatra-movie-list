@@ -3,7 +3,11 @@
 
 <p>Description: <%= @movie_entry.content %></p>
 
-<% if current_user == @movie_entry.user%>
+<% if authorized_to_edit?(@movie_entry) %>
 <a href="/movies_list/<%= @movie_entry.id %>/edit">Edit</a>
-<a href="/movies_list/<%= @movie_entry.id %>/edit">Delete</a>
-<%end%>
+<br><br>
+<form class="" action="/movies_list/<%= @movie_entry.id %>" method="post">
+ <input type="hidden" name="_method" value="DELETE">
+ <input type="submit" name="" value="Delete this Entry">
+ </form/>
+<% end %>

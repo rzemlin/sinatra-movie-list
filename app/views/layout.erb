@@ -14,11 +14,12 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+    <% if logged_in? %>
     <div class="nav">
       <a href="/movie_list">See All Movies</a>
       <a href="/movie_list/new">New Entry</a>
       <a href="/logout">Log Out</a>
-      
+    <% end %>  
     <div class="wrapper">
 
         <%= yield %>
