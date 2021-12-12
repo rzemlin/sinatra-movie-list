@@ -19,7 +19,11 @@
       <a href="/movie_list">See All Movies</a>
       <a href="/movie_list/new">New Entry</a>
       <a href="/logout">Log Out</a>
-    <% end %>  
+    <% end %> 
+    </div>
+    <% if flash[:message] %> 
+    <h3><%= flash[:message] %></h3>
+    <% end %>
     <div class="wrapper">
 
         <%= yield %>
