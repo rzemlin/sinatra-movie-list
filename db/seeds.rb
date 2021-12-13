@@ -7,5 +7,5 @@ greg = User.create(name: "Greg", email: "greg@greg.com", password: "password")
 
 #a few movie entires
 
-MovieEntry.create(title: "Forrest Gump", content: "great flick", user_id: ryan.id)
-MovieEntry.create(title: "Talladega Nights", content: "great flick", user_id: greg.id)
+MovieEntry.create(title: "Forrest Gump", content: "Life is like a box of chocolates...", user_id: ryan.id)
+MovieEntry.create(title: "Talladega Nights", content: "Ricky Bobby", user_id: greg.id)
